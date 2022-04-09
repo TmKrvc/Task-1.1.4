@@ -1,6 +1,8 @@
 package jm.task.core.jdbc.dao;
+
 import jm.task.core.jdbc.model.User;
 import jm.task.core.jdbc.util.Util;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,11 +16,12 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void createUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            String createTable = "CREATE TABLE IF NOT EXIST users (" +
-                    "Id INT PRIMARY KEY AUTO_INCREMENT," +
-                    "    name VARCHAR(20)," +
-                    "    lastname VARCHAR(20)," +
-                    "age TINYINT(100))";
+            String createTable = ("CREATE TABLE IF NOT EXISTS users" +
+                    "(id mediumint not null auto_increment," +
+                    "name VARCHAR(50)," +
+                    "lastname VARCHAR(50)," +
+                    "age tinyint," +
+                    "PRIMARY KEY (id))");
             statement.execute(createTable);
             System.out.println("Таблица создана");
         } catch (SQLException throwables) {
@@ -28,7 +31,7 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void dropUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            String dropTable = "DROP TABLE IF EXIST users ";
+            String dropTable = "DROP TABLE IF EXISTS users ";
             statement.execute(dropTable);
             System.out.println("Таблица удалена");
         } catch (SQLException throwables) {
@@ -43,7 +46,7 @@ public class UserDaoJDBCImpl implements UserDao {
             statement.setString(2, lastName);
             statement.setByte(3, age);
             statement.executeUpdate();
-            System.out.println("User с именем – " + name + " добавлен в базу данных");
+            System.out.println("User с именем " + name + " добавлен в базу данных");
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
@@ -80,8 +83,8 @@ public class UserDaoJDBCImpl implements UserDao {
 
     public void cleanUsersTable() {
         try (Statement statement = connection.createStatement()) {
-            String cleanUser = "TRUNCATE users";
-            statement.executeUpdate(cleanUser);
+            String cleanUserTable = "TRUNCATE users";
+            statement.executeUpdate(cleanUserTable);
             System.out.println("Таблица очищена");
         } catch (SQLException throwables) {
             throwables.printStackTrace();

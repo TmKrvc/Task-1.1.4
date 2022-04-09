@@ -5,9 +5,9 @@ import jm.task.core.jdbc.util.Util;
 
 import java.sql.SQLException;
 
+
 public class Main {
     public static void main(String[] args) {
-        Util.getConnection();
         UserDao userDao = new UserDaoJDBCImpl();
 
         userDao.createUsersTable();
@@ -17,14 +17,17 @@ public class Main {
         userDao.saveUser("Name3", "LastName3", (byte) 31);
         userDao.saveUser("Name4", "LastName4", (byte) 38);
 
+
         userDao.removeUserById(1);
         userDao.getAllUsers();
         userDao.cleanUsersTable();
         userDao.dropUsersTable();
+
         try {
-            Util.getConnection().close();
+        Util.getConnection().close();
         } catch (SQLException throwables) {
-            throwables.printStackTrace();
+        throwables.printStackTrace();
         }
+
     }
 }
