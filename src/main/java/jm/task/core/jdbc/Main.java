@@ -1,15 +1,18 @@
 package jm.task.core.jdbc;
+
 import jm.task.core.jdbc.dao.UserDao;
+import jm.task.core.jdbc.dao.UserDaoHibernateImpl;
 import jm.task.core.jdbc.dao.UserDaoJDBCImpl;
 import jm.task.core.jdbc.util.Util;
+import org.hibernate.HibernateException;
 
 import java.sql.SQLException;
+import java.util.Properties;
 
 
 public class Main {
     public static void main(String[] args) {
-        UserDao userDao = new UserDaoJDBCImpl();
-
+        UserDao userDao = new UserDaoHibernateImpl();
         userDao.createUsersTable();
 
         userDao.saveUser("Name1", "LastName1", (byte) 20);
@@ -24,9 +27,9 @@ public class Main {
         userDao.dropUsersTable();
 
         try {
-        Util.getConnection().close();
-        } catch (SQLException throwables) {
-        throwables.printStackTrace();
+            Util.getSessionFactory().close();
+        } catch (HibernateException throwables) {
+            throwables.printStackTrace();
         }
 
     }
