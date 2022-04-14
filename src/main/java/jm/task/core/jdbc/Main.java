@@ -27,7 +27,9 @@ public class Main {
         userDao.dropUsersTable();
 
         try {
-            Util.getSessionFactory().close();
+            if (Util.getSessionFactory() != null) {
+                Util.getSessionFactory().close();
+            }
         } catch (HibernateException throwables) {
             throwables.printStackTrace();
         }
