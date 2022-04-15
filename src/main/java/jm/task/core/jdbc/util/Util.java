@@ -18,8 +18,17 @@ public class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static SessionFactory sessionFactory;
+    private static Util util;
+
 
     private Util() {
+    }
+
+    public static Util getUtil() {
+        if (util == null) {
+            util = new Util();
+        }
+        return util;
     }
 
     public static SessionFactory getSessionFactory() {
