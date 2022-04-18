@@ -26,13 +26,13 @@ public class Main {
         userDao.cleanUsersTable();
         userDao.dropUsersTable();
 
-        try {
-            if (Util.getSessionFactory() != null) {
-                Util.getSessionFactory().close();
-            }
-        } catch (HibernateException throwables) {
-            throwables.printStackTrace();
-        }
+//        try {
+//            if (Util.getSessionFactory() != null) {
+//                Util.getSessionFactory().close();
+//            }
+//        } catch (HibernateException throwables) {
+//            throwables.printStackTrace();
+//        }
 
     }
 }

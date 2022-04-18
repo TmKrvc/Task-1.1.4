@@ -10,7 +10,7 @@ import org.hibernate.SessionFactory;
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
-    UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
+   private UserDaoHibernateImpl userDaoHibernate = new UserDaoHibernateImpl();
 
 
     public void createUsersTable() {
