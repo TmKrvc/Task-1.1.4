@@ -8,7 +8,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
-    private SessionFactory sessionFactory = Util.getSessionFactory();
+    private SessionFactory sessionFactory = Util.getUtil().getSessionFactory();
 
     public UserDaoHibernateImpl() {
 
