@@ -18,7 +18,7 @@ public class Util {
     private static final String USERNAME = "root";
     private static final String PASSWORD = "root";
     private static SessionFactory sessionFactory;
-    private static Util util;
+    private static Util util = null;
 
 
     private Util() {
@@ -37,7 +37,7 @@ public class Util {
                 Configuration configuration = new Configuration();
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/mydbtest?useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow");
+                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/dbtest?useLegacyDatetimeCode=false&serverTimezone=Europe/Moscow");
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "root");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
