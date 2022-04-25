@@ -22,11 +22,18 @@ public class Main {
         userDao.saveUser("Name3", "LastName3", (byte) 31);
         userDao.saveUser("Name4", "LastName4", (byte) 38);
 
+        List<User> list = userDao.getAllUsers();
+        for (User user : list) {
+            System.out.println(user);
+        }
 
         userDao.removeUserById(1);
         userDao.getAllUsers();
         userDao.cleanUsersTable();
         userDao.dropUsersTable();
+
+
+
 
     }
 }
