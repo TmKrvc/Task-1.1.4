@@ -38,7 +38,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
     }
@@ -62,7 +62,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
     }
@@ -86,7 +86,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
     }
@@ -108,7 +108,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
     }
@@ -131,7 +131,7 @@ public class UserDaoHibernateImpl implements UserDao {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
         return users;
@@ -146,15 +146,15 @@ public class UserDaoHibernateImpl implements UserDao {
             query.executeUpdate();
             session.getTransaction().commit();
         } catch (HibernateException e) {
-            e.printStackTrace();
             session.getTransaction().rollback();
+            e.printStackTrace();
         } finally {
             try {
                 if (session != null) {
                     session.close();
                 }
             } catch (HibernateException e) {
-                e.printStackTrace();
+
             }
         }
     }
